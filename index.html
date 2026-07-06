@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEL Cosmetics — ADN de Marca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Parisienne&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f4ecdf;
+    --cream-deep:#ece1cd;
+    --ink:#2b2018;
+    --ink-soft:#5a4c3f;
+    --gold:#a9782f;
+    --gold-light:#c9a24b;
+    --gold-pale:#e8d4a0;
+    --wine:#5c1a26;
+    --wine-soft:#7a2c38;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+  }
+  ::selection{background:var(--wine);color:var(--cream);}
+
+  h1,h2,h3{
+    font-family:'Playfair Display', serif;
+    margin:0;
+    letter-spacing:.01em;
+  }
+
+  .script{
+    font-family:'Parisienne', cursive;
+    font-weight:400;
+  }
+
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    font-size:.72rem;
+    color:var(--gold);
+    font-weight:500;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:22px 0 34px;
+  }
+  .divider::before,.divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  }
+  .divider span{
+    color:var(--gold);
+    font-size:1rem;
+  }
+
+  section{
+    max-width:1080px;
+    margin:0 auto;
+    padding:90px 32px;
+  }
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:60px 24px;
+    background:
+      radial-gradient(ellipse at 50% -10%, #fbf5e8 0%, transparent 55%),
+      var(--cream);
+  }
+  .ring{
+    width:220px;height:220px;
+    border-radius:50%;
+    border:1.5px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    margin-bottom:38px;
+  }
+  .ring::before{
+    content:"";
+    position:absolute;
+    inset:9px;
+    border-radius:50%;
+    border:1px solid var(--gold-light);
+    opacity:.6;
+  }
+  .ring .spark{
+    position:absolute;
+    top:-14px;
+    color:var(--gold);
+    font-size:1.4rem;
+  }
+  .ring .wordmark{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:2.6rem;
+    color:var(--wine);
+    letter-spacing:.04em;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    color:var(--ink);
+    margin-top:6px;
+  }
+  .hero .script{
+    font-size:clamp(2.6rem, 7vw, 4.5rem);
+    color:var(--wine);
+    display:block;
+  }
+  .hero p.lede{
+    max-width:560px;
+    margin:26px auto 0;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+  }
+  .hero .badge{
+    margin-top:46px;
+    font-size:.78rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--gold);
+    border:1px solid var(--gold-light);
+    padding:10px 22px;
+    border-radius:999px;
+  }
+
+  /* ESENCIA */
+  .essence-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.3fr;
+    gap:56px;
+    align-items:start;
+  }
+  .essence-grid blockquote{
+    margin:0;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:1.5rem;
+    line-height:1.45;
+    color:var(--wine-soft);
+    border-left:2px solid var(--gold-light);
+    padding-left:22px;
+  }
+  .essence-grid p{
+    color:var(--ink-soft);
+    font-size:1rem;
+  }
+
+  /* PILARES */
+  .pillars{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:2px;
+    background:var(--gold-light);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .pillar{
+    background:var(--cream);
+    padding:34px 26px;
+    text-align:left;
+  }
+  .pillar .num{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:.85rem;
+    display:block;
+    margin-bottom:10px;
+  }
+  .pillar h3{
+    font-size:1.25rem;
+    margin-bottom:8px;
+  }
+  .pillar p{
+    font-size:.9rem;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  /* VOZ */
+  .voice-cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+    margin-top:36px;
+  }
+  .voice-card{
+    padding:28px;
+    border-radius:6px;
+  }
+  .voice-card.yes{
+    background:#fbf6ea;
+    border:1px solid var(--gold-pale);
+  }
+  .voice-card.no{
+    background:transparent;
+    border:1px solid #d8cdb8;
+  }
+  .voice-card .tag{
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  .voice-card.yes .tag{color:var(--wine);}
+  .voice-card.no .tag{color:#9a8c76;}
+  .voice-card ul{
+    padding-left:18px;
+    margin:16px 0 0;
+    font-size:.92rem;
+  }
+  .voice-card li{margin-bottom:10px;}
+
+  /* PALETA */
+  .swatches{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:0;
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 12px 40px -20px rgba(43,32,24,.35);
+  }
+  .swatch{
+    height:150px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:14px;
+    color:#fff;
+    font-family:'Jost', sans-serif;
+  }
+  .swatch span.name{font-size:.82rem; font-weight:500;}
+  .swatch span.hex{font-size:.72rem; opacity:.85;}
+  .swatch.dark span{color:#2b2018;}
+
+  /* TIPOGRAFIA */
+  .type-specimen{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .type-block{
+    border-top:1px solid var(--gold-light);
+    padding-top:20px;
+  }
+  .type-block .label{
+    font-size:.72rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:14px;
+    display:block;
+  }
+  .type-block .sample-display{
+    font-family:'Playfair Display', serif;
+    font-size:2.1rem;
+    color:var(--ink);
+  }
+  .type-block .sample-script{
+    font-family:'Parisienne', cursive;
+    font-size:2.3rem;
+    color:var(--wine);
+  }
+  .type-block .sample-body{
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    font-size:1.4rem;
+    color:var(--ink);
+  }
+  .type-block .meta{
+    font-size:.82rem;
+    color:var(--ink-soft);
+    margin-top:8px;
+  }
+
+  /* PRODUCTOS */
+  .cat-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+  }
+  .cat-table th{
+    text-align:left;
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size:1rem;
+    padding:14px 16px;
+    border-bottom:1.5px solid var(--wine);
+    color:var(--wine);
+  }
+  .cat-table td{
+    padding:16px;
+    border-bottom:1px solid #ddd0b8;
+    font-size:.92rem;
+    vertical-align:top;
+  }
+  .cat-table td.range{
+    color:var(--gold);
+    font-weight:500;
+    white-space:nowrap;
+  }
+
+  /* AUDIENCIA / IMAGEN */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  .mini-list{
+    list-style:none;
+    padding:0;
+    margin:18px 0 0;
+  }
+  .mini-list li{
+    padding:12px 0;
+    border-bottom:1px dashed #d8cdb8;
+    font-size:.92rem;
+    color:var(--ink-soft);
+  }
+  .mini-list li strong{color:var(--ink); font-weight:500;}
+
+  footer{
+    text-align:center;
+    padding:70px 24px 60px;
+    background:var(--wine);
+    color:var(--cream);
+  }
+  footer .script{color:var(--gold-pale); font-size:2.2rem;}
+  footer p{color:var(--gold-pale); font-size:.85rem; letter-spacing:.05em;}
+  footer .contact{
+    margin-top:18px;
+    font-family:'Playfair Display', serif;
+    font-size:1.1rem;
+    letter-spacing:.05em;
+  }
+
+  @media (max-width: 760px){
+    .essence-grid, .voice-cols, .type-specimen, .two-col{grid-template-columns:1fr;}
+    .swatches{grid-template-columns:repeat(2,1fr);}
+    section{padding:64px 22px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="ring">
+    <span class="spark">✦</span>
+    <span class="wordmark">MEL</span>
+  </div>
+  <span class="eyebrow">Cosmetics · Documento de marca</span>
+  <h1>ADN de marca<span class="script">Elegancia accesible</span></h1>
+  <p class="lede">Un resumen vivo de quién es MEL Cosmetics — voz, paleta, tipografía y pilares de producto — listo para alimentar Pomelli y mantener cada pieza de comunicación fiel a la marca.</p>
+  <div class="badge">Catálogo Nueva Colección · 2026</div>
+</section>
+
+<!-- ESENCIA -->
+<section id="esencia">
+  <span class="eyebrow">Esencia</span>
+  <div class="divider"><span>✦</span></div>
+  <div class="essence-grid">
+    <blockquote>"Resalta tu belleza con nosotras."</blockquote>
+    <p>MEL Cosmetics es una marca venezolana de maquillaje y cosmética que vende por catálogo directo, con pedidos confirmados por WhatsApp y pago por Pago móvil, efectivo o Zelle. Combina un tono editorial de alta perfumería —dorado, tipografía serif, acabados de lujo— con precios de acceso real (desde 1$ hasta 30$), y un catálogo multimarca (SHEGLAM, L'Oréal, Maybelline, NYX, Bioderma, entre otras) curado por una sola persona de confianza, no por un supermercado impersonal. Es lujo de bolsillo: la clienta se siente atendida, no solo vendida.</p>
+  </div>
+</section>
+
+<!-- PERSONALIDAD -->
+<section id="personalidad">
+  <span class="eyebrow">Personalidad</span>
+  <div class="divider"><span>✦</span></div>
+  <div class="pillars">
+    <div class="pillar">
+      <span class="num">I.</span>
+      <h3>Elegante</h3>
+      <p>Se comunica con la calma de una boutique, no con el ruido de una liquidación. Dorado, serif, espacio en blanco.</p>
+    </div>
+    <div class="pillar">
+      <span class="num">II.</span>
+      <h3>Cercana</h3>
+      <p>Pedidos por WhatsApp, trato directo, respuestas rápidas. La clienta habla con una persona, no con un catálogo frío.</p>
+    </div>
+    <div class="pillar">
+      <span class="num">III.</span>
+      <h3>Confiable</h3>
+      <p>Precios claros, marcas reconocidas, descripciones honestas de cada producto: qué hace, para qué piel, cuánto dura.</p>
+    </div>
+    <div class="pillar">
+      <span class="num">IV.</span>
+      <h3>Accesible</h3>
+      <p>El lujo no depende del precio. Desde 1$ hasta 30$, cada producto se presenta con el mismo cuidado visual.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VOZ Y TONO -->
+<section id="voz">
+  <span class="eyebrow">Voz y tono</span>
+  <div class="divider"><span>✦</span></div>
+  <p style="max-width:620px;color:var(--ink-soft)">MEL habla en segunda persona, con seguridad y calidez. Frases cortas, precio siempre visible, beneficio antes que ingrediente. Nunca suena a spam ni a "rebaja de temporada".</p>
+  <div class="voice-cols">
+    <div class="voice-card yes">
+      <span class="tag">Así suena MEL</span>
+      <ul>
+        <li>"Resalta tu belleza con nosotras."</li>
+        <li>"Disponible en varios tonos. Precio: 7$."</li>
+        <li>"Ideal para piel seca. Se recomienda usar dedos o brocha, comenzando con poca cantidad."</li>
+        <li>"Para confirmar pedidos, escríbenos."</li>
+      </ul>
+    </div>
+    <div class="voice-card no">
+      <span class="tag">Así NO suena MEL</span>
+      <ul>
+        <li>"¡¡¡OFERTÓN IMPERDIBLE!!! 🔥🔥🔥"</li>
+        <li>Superlativos vacíos sin precio ni dato concreto.</li>
+        <li>Jerga técnica de laboratorio sin traducir el beneficio.</li>
+        <li>Presión de urgencia agresiva ("último día", "se agota YA").</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PALETA -->
+<section id="paleta">
+  <span class="eyebrow">Paleta</span>
+  <div class="divider"><span>✦</span></div>
+  <div class="swatches">
+    <div class="swatch dark" style="background:#f4ecdf;">
+      <span class="name">Beige lienzo</span>
+      <span class="hex">#F4ECDF</span>
+    </div>
+    <div class="swatch dark" style="background:#e8d4a0;">
+      <span class="name">Dorado pálido</span>
+      <span class="hex">#E8D4A0</span>
+    </div>
+    <div class="swatch" style="background:#a9782f;">
+      <span class="name">Dorado marca</span>
+      <span class="hex">#A9782F</span>
+    </div>
+    <div class="swatch" style="background:#5c1a26;">
+      <span class="name">Vino / labial</span>
+      <span class="hex">#5C1A26</span>
+    </div>
+    <div class="swatch" style="background:#2b2018;">
+      <span class="name">Tinta</span>
+      <span class="hex">#2B2018</span>
+    </div>
+  </div>
+  <p style="margin-top:18px;color:var(--ink-soft);font-size:.9rem;">Fondo cálido siempre; dorado para precios, líneas y detalles; vino solo para acentos de alto impacto (el labial del logo, títulos destacados). Nunca fondo blanco puro ni negro puro.</p>
+</section>
+
+<!-- TIPOGRAFIA -->
+<section id="tipografia">
+  <span class="eyebrow">Tipografía</span>
+  <div class="divider"><span>✦</span></div>
+  <div class="type-specimen">
+    <div class="type-block">
+      <span class="label">Display — Playfair Display</span>
+      <div class="sample-display">MEL Cosmetics</div>
+      <p class="meta">Títulos, nombres de producto, "Precio". Usar en mayúsculas con tracking amplio para epígrafes.</p>
+    </div>
+    <div class="type-block">
+      <span class="label">Firma — Parisienne</span>
+      <div class="sample-script">Resalta tu belleza</div>
+      <p class="meta">Solo para el lema o un acento por pieza — nunca para párrafos ni precios.</p>
+    </div>
+    <div class="type-block">
+      <span class="label">Cuerpo — Jost Light/Regular</span>
+      <div class="sample-body">Precio 7$ · Disponible en varios tonos</div>
+      <p class="meta">Descripciones, listas de producto, condiciones de pago. Minúsculas, tono conversacional.</p>
+    </div>
+    <div class="type-block">
+      <span class="label">Detalle</span>
+      <div class="sample-display" style="font-size:1.6rem;">✦ — ✦</div>
+      <p class="meta">La estrella de cuatro puntas y la línea fina son el separador de firma de MEL: úsalos entre secciones, no como relleno decorativo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTO -->
+<section id="producto">
+  <span class="eyebrow">Pilares de producto</span>
+  <div class="divider"><span>✦</span></div>
+  <table class="cat-table">
+    <tr><th>Categoría</th><th>Ejemplos del catálogo</th><th>Rango</th></tr>
+    <tr><td>Rostro</td><td>Bases (Sheglam, Maybelline, L'Oréal, Kiko), polvos compactos y sueltos, correctores</td><td class="range">2$ – 26$</td></tr>
+    <tr><td>Labios</td><td>Gloss Sheglam, Bene Tint, tintas de labios, mascarillas hidratantes</td><td class="range">1$ – 16$</td></tr>
+    <tr><td>Ojos</td><td>Rímeles Sheglam (voluminizador, a prueba de agua, doble), delineadores, primer</td><td class="range">2,50$ – 6$</td></tr>
+    <tr><td>Rubor e iluminación</td><td>Rubores líquidos y en polvo, iluminador en barra</td><td class="range">2,50$ – 7$</td></tr>
+    <tr><td>Cejas</td><td>Gel laminador, pomada 2en1, cepillo, gel fijador</td><td class="range">1,50$ – 12$</td></tr>
+    <tr><td>Cuidado y accesorios</td><td>Protector solar Bioderma, serum, crema de manos, brochas, beauty blender, mascarillas</td><td class="range">1$ – 16$</td></tr>
+  </table>
+</section>
+
+<!-- AUDIENCIA / IMAGEN -->
+<section id="audiencia">
+  <div class="two-col">
+    <div>
+      <span class="eyebrow">A quién le habla</span>
+      <div class="divider"><span>✦</span></div>
+      <ul class="mini-list">
+        <li><strong>Mujeres jóvenes y adultas</strong> que arman su rutina de maquillaje diaria o de ocasión.</li>
+        <li><strong>Clientas recurrentes por WhatsApp</strong> que valoran atención directa sobre ir a una tienda física.</li>
+        <li><strong>Presupuesto real</strong>: buscan piezas de 2$–10$ tanto como una base de 25$; la marca no discrimina por ticket.</li>
+        <li><strong>Contexto venezolano</strong>: pago móvil, efectivo y Zelle como métodos naturales de compra.</li>
+      </ul>
+    </div>
+    <div>
+      <span class="eyebrow">Estilo de imagen</span>
+      <div class="divider"><span>✦</span></div>
+      <ul class="mini-list">
+        <li>Producto sobre mármol, tela clara o fondo neutro — nunca fondos saturados o de estudio genérico.</li>
+        <li>Retratos de piel luminosa, maquillaje natural-editorial, luz suave y cálida.</li>
+        <li>Detalles dorados (marcos, joyería, texturas) que dialogan con la paleta de marca.</li>
+        <li>Una imagen, un producto: composición limpia, sin colage recargado.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="script">Nuevo catálogo, cada temporada</span>
+  <p>MEL COSMETICS · ADN DE MARCA</p>
+  <div class="contact">Pedidos y confirmación por WhatsApp: 0424-204-70-59</div>
+</footer>
+
+</body>
+</html>
